@@ -21,7 +21,7 @@ int print_file(const char* dirname, const char* filename, int dirnamelen){
     return 1;
   }
 
-  int sep_offset = strlcpy(pname + dir_offset, "/\0", sizeof(pname)); // write separator and null byte
+  int sep_offset = strlcpy(pname + dir_offset, "/", sizeof(pname)); // write separator
   if (sep_offset >= sizeof(pname)) {
     fprintf(stderr, "Problem copying file separator");
     return 1;
