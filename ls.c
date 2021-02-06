@@ -33,14 +33,12 @@ int print_file(const char* dirname, const char* filename, int dirnamelen){
     return 1;
   }
 
-  struct stat * fstat = malloc(sizeof(stat));
-  if (stat(pname, fstat) != 0) {
+  struct stat fstat;
+  if (stat(pname, &fstat) != 0) {
     printf("Error reading: %s\n", pname);
-    free(fstat);
     return -1;
   }
-  printf(BLU "%8lld %ld %s\n" reset, fstat->st_size, fstat->st_atimespec.tv_nsec, filename);
-  free(fstat);
+  printf(BLU "%8lld %ld %s\n" reset, fstat.st_size, fstat.st_atimespec.tv_nsec, filename);
   return 1;
 }
 
